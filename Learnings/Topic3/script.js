@@ -101,7 +101,7 @@ function factorial(num){
 }
 let y = factorial(3);
 console.log('factorial using recursion: ', y);
-// TODO:: Fibonacci sequence up to 10 numbers
+
 function fibonacci(n){
 
     if(n <= 1){
@@ -232,6 +232,7 @@ Maximum discount should not exceed 50
         (113 points from purchase + 50 bonus points!)
 */
 
+// TODO:: Finish this project
 let cartItems = [
     {name: 'Laptop', quantity: 1, price: 20, category: 'electronics'},
     {name: 'Bag', quantity: 1, price: 20, category: 'personal collection'},
