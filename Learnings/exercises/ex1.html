@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+</head>
+<body>
+    <!-- Name -->
+    <div>
+        <h2>Ex 1.1 Enter and show Name</h2>
+        <input type="text" id="name" placeholder="Enter your name">
+        <button id="submit" type="button">Submit</button>
+        <p id="text"></p>
+    </div>
+    <!-- radius -->
+     <div>
+        <h2>Ex 1.2 - Enter Radius of a Circle to get the circumference</h2>
+        <input type="text" id="radius" placeholder="Enter radius">
+        <button id="radiusBtn" type="button">Enter</button>
+        <p id="radiusText"></p>
+     </div>
+    <!-- Counter Program -->
+     <div>
+        <h2>Ex 1.3 - Counter Program</h2>
+        <h1 id="counter">0</h1>
+        <div>
+            <button id="increase" type="button">+</button>
+            <button id="reset">Reset</button>
+            <button id="decrease" type="button">-</button>
+        </div>
+    </div>
+    <!-- roll Dice -->
+     <div>
+        <h2>Ex 1.4 - roll Dice Random Generator</h2>
+        <button id="roll">Role</button>
+        <p id="num1"></p>
+        <p id="num2"></p>
+        <p id="num3"></p>
+    </div>
+    <script>
+        // Enter name
+        const btn = document.getElementById('submit');
+        const input = document.getElementById('name');
+        let text = document.getElementById('text');
+
+        btn.addEventListener('click', () => {
+            text.textContent = input.value;    
+        });
+
+        // Radius
+        const radiusInput = document.getElementById('radius');
+        const radiusBtn = document.getElementById('radiusBtn');
+        const radiusText = document.getElementById('radiusText');
+
+        radiusBtn.onclick = () => {
+            const radius = Number(radiusInput.value);
+            if(isNaN(radius) || radius <= 0){
+                radiusText.textContent = "Enter A Valid Radius";
+                return;
+            }
+            const circumference = 2 * Math.PI * radius;
+            radiusText.textContent = circumference.toFixed(2) + " cm";
+        }
+
+        // Counter
+        let count = 0;
+        const counter = document.getElementById('counter');
+        const increase = document.getElementById('increase');
+        const decrease = document.getElementById('decrease');
+        const reset = document.getElementById('reset');
+
+        const updateCounter = () => {
+            counter.textContent = count;
+            decrease.disabled = count === 0;
+        }
+
+        increase.onclick = () => {
+            count++;
+            updateCounter();
+        }
+        decrease.onclick = () => {
+           count = (count <= 0 ) ? 0 : count - 1;
+           updateCounter();
+        }
+        reset.onclick = () => {
+            count = 0;
+            updateCounter();
+        }
+
+        // roll Dice
+        const rollBtn = document.getElementById('roll');
+        const num1 = document.getElementById('num1');
+        const num2 = document.getElementById('num2');
+        const num3 = document.getElementById('num3');
+
+        function randomNumber( min = 1, max = 6){
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        // dry
+        const dice = [num1, num2, num3];
+        rollBtn.onclick = () => {
+            dice.forEach(die => {
+                die.textContent = randomNumber();
+            });
+        }
+    </script>
+</body>
+</html>
